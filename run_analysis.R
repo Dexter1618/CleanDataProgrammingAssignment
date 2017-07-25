@@ -292,6 +292,10 @@ combined_data <- reshape2::dcast(data=combined_data, subject_num+activity ~ vari
 
 data.table::fwrite(x=combined_data, file="tidy_output_data.txt", quote=FALSE)
 
-
 verify_tidy_data <- fread("tidy_output_data.txt")
 head(verify_tidy_data)
+
+
+# added in the "write.table(row.name=FALSE)" command at the very end
+write.table(combined_data, row.name=FALSE, file="tidy_output_data_norowname.txt")
+write.table(combined_data, row.name=TRUE, file="tidy_output_data_rowname.txt")
